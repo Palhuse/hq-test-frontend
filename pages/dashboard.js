@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { createClient } from '@supabase/supabase-js'
 import UserList from '../components/UserList'
 import CreateUser from '../components/CreateUser'
+import EditUserList from '../components/EditUserList'
 import ModuleCards from '../components/ModuleCards'
 
 const supabase = createClient(
@@ -57,6 +58,7 @@ export default function Dashboard() {
           <>
             <UserList />
             <CreateUser />
+            <EditUserList />
           </>
         )}
 
