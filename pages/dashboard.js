@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { createClient } from '@supabase/supabase-js'
+import UserList from '../components/UserList'
 
 const supabase = createClient(
   'https://uiryvqtzdguvebqkpgep.supabase.co',
@@ -49,12 +50,14 @@ export default function Dashboard() {
         <p className="mb-4">Du er logget inn som: <strong>{profile.role}</strong></p>
 
         {profile.role === 'admin' && (
-          <div className="space-y-2 mb-6">
+          <>
             <h2 className="font-semibold mb-2">Adminverktøy:</h2>
-            <div className="p-2 bg-gray-200 rounded">📋 Brukerliste (kommer)</div>
-            <div className="p-2 bg-gray-200 rounded">🛠️ Systemstatus (kommer)</div>
-            <div className="p-2 bg-gray-200 rounded">🧩 Moduloversikt (kommer)</div>
-          </div>
+            <ul className="space-y-2 mb-6">
+              <li className="p-2 bg-gray-200 rounded">🛠️ Systemstatus (kommer)</li>
+              <li className="p-2 bg-gray-200 rounded">🧩 Moduloversikt (kommer)</li>
+            </ul>
+            <UserList />
+          </>
         )}
 
         {profile.role === 'partner' && (
@@ -75,7 +78,7 @@ export default function Dashboard() {
 
         <button
           onClick={handleLogout}
-          className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-xl shadow"
+          className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-xl shadow mt-6"
         >
           Logg ut
         </button>
