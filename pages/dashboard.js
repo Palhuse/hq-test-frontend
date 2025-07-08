@@ -5,6 +5,7 @@ import UserList from '../components/UserList'
 import CreateUser from '../components/CreateUser'
 import EditUserList from '../components/EditUserList'
 import ModuleCards from '../components/ModuleCards'
+import ModulStatus from '../components/ModulStatus'
 
 const supabase = createClient(
   'https://uiryvqtzdguvebqkpgep.supabase.co',
@@ -53,6 +54,7 @@ export default function Dashboard() {
         <p className="mb-4">Du er logget inn som: <strong>{profile.role}</strong></p>
 
         <ModuleCards role={profile.role} />
+        <ModulStatus />
 
         {profile.role === 'admin' && (
           <>
