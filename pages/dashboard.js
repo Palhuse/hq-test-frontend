@@ -15,7 +15,7 @@ export default function Dashboard() {
     const getProfile = async () => {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) {
-        router.push('/') // Hvis ikke innlogget, gå til index
+        router.push('/')
         return
       }
 
@@ -48,13 +48,30 @@ export default function Dashboard() {
         <h1 className="text-xl font-bold mb-4">Velkommen, {profile.full_name}</h1>
         <p className="mb-4">Du er logget inn som: <strong>{profile.role}</strong></p>
 
-        <h2 className="text-md font-semibold mb-2">Tilgjengelige moduler:</h2>
-        <ul className="space-y-2 mb-6">
-          <li className="p-2 bg-gray-200 rounded">📊 CFO Adminpanel</li>
-          <li className="p-2 bg-gray-200 rounded">👥 CSM Modul</li>
-          <li className="p-2 bg-gray-200 rounded">📈 Investorportal</li>
-          <li className="p-2 bg-gray-200 rounded">🌱 ESG / HMS</li>
-        </ul>
+        {profile.role === 'admin' && (
+          <div className="space-y-2 mb-6">
+            <h2 className="font-semibold mb-2">Adminverktøy:</h2>
+            <div className="p-2 bg-gray-200 rounded">📋 Brukerliste (kommer)</div>
+            <div className="p-2 bg-gray-200 rounded">🛠️ Systemstatus (kommer)</div>
+            <div className="p-2 bg-gray-200 rounded">🧩 Moduloversikt (kommer)</div>
+          </div>
+        )}
+
+        {profile.role === 'partner' && (
+          <div className="space-y-2 mb-6">
+            <h2 className="font-semibold mb-2">Partnerpanel:</h2>
+            <div className="p-2 bg-gray-200 rounded">📁 Kunder</div>
+            <div className="p-2 bg-gray-200 rounded">📨 Tilbakemeldinger</div>
+          </div>
+        )}
+
+        {profile.role === 'kunde' && (
+          <div className="space-y-2 mb-6">
+            <h2 className="font-semibold mb-2">Kundemoduler:</h2>
+            <div className="p-2 bg-gray-200 rounded">📊 Mine rapporter</div>
+            <div className="p-2 bg-gray-200 rounded">📦 Modulstatus</div>
+          </div>
+        )}
 
         <button
           onClick={handleLogout}
