@@ -6,6 +6,7 @@ import CreateUser from '../components/CreateUser'
 import EditUserList from '../components/EditUserList'
 import ModuleCards from '../components/ModuleCards'
 import ModulStatus from '../components/ModulStatus'
+import SendFeedback from '../components/SendFeedback'
 
 const supabase = createClient(
   'https://uiryvqtzdguvebqkpgep.supabase.co',
@@ -63,6 +64,8 @@ export default function Dashboard() {
             <EditUserList />
           </>
         )}
+
+        <SendFeedback profile={profile} />
 
         <button
           onClick={handleLogout}
