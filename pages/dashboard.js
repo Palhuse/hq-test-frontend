@@ -7,6 +7,7 @@ import EditUserList from '../components/EditUserList'
 import ModuleCards from '../components/ModuleCards'
 import ModulStatus from '../components/ModulStatus'
 import SendFeedback from '../components/SendFeedback'
+import ListFeedback from '../components/ListFeedback'
 
 const supabase = createClient(
   'https://uiryvqtzdguvebqkpgep.supabase.co',
@@ -62,6 +63,7 @@ export default function Dashboard() {
             <UserList />
             <CreateUser />
             <EditUserList />
+            <ListFeedback />
           </>
         )}
 
