@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { createClient } from '@supabase/supabase-js'
 import UserList from '../components/UserList'
+import CreateUser from '../components/CreateUser'
 
 const supabase = createClient(
   'https://uiryvqtzdguvebqkpgep.supabase.co',
@@ -57,6 +58,7 @@ export default function Dashboard() {
               <li className="p-2 bg-gray-200 rounded">🧩 Moduloversikt (kommer)</li>
             </ul>
             <UserList />
+            <CreateUser />
           </>
         )}
 
