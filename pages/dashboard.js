@@ -8,6 +8,7 @@ import ModuleCards from '../components/ModuleCards'
 import ModulStatus from '../components/ModulStatus'
 import SendFeedback from '../components/SendFeedback'
 import ListFeedback from '../components/ListFeedback'
+import MyFeedback from '../components/MyFeedback'
 
 const supabase = createClient(
   'https://uiryvqtzdguvebqkpgep.supabase.co',
@@ -66,6 +67,10 @@ export default function Dashboard() {
             <ListFeedback />
           </>
         )}
+
+        {profile.role === 'partner' || profile.role === 'kunde' ? (
+          <MyFeedback />
+        ) : null}
 
         <SendFeedback profile={profile} />
 
